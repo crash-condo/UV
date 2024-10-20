@@ -34,11 +34,11 @@ class MainActivity : Activity() {
         }
 
         findViewById<Button>(R.id.buttonVolUp).setOnClickListener {
-            sendBluetoothCommand("VU")
+            sendBluetoothCommand("U")
         }
 
         findViewById<Button>(R.id.buttonVolDown).setOnClickListener {
-            sendBluetoothCommand("VD")
+            sendBluetoothCommand("D")
         }
     }
 
