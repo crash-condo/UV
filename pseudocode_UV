@@ -1,0 +1,15 @@
+Pseudocode flow of final program and control of Universal Volume Device (UVD)
+
+Press Button to enter config mode.
+Signal this with 5 green LED blinks which then remainins on during config mode.
+UVD is now holding waiting for IR input, device is expecting VolumeUp first.
+UVD receives VolumeUp IR code, stores it and confirms successful receive with three green LED blinks. Green LED stays on to signal still in config mode.
+UVD is now holding waiting for next IR input, UVD is expecint VolumeDown now.
+UVD Receives VolumeDown IR code, stores it and confirms sccesfull receive with 25 rapid green LED blinks.
+Green LED is now off, UVD is in run mode now listening for volume spikes prepared to transmit volume ups or downs.
+
+
+Questions. How does the end user set the volume threshold. Do we have to measure the room and base it on the running average? How do you track spikes over time seperate from a running average, what is that called in math, how can we implement it?
+
+The answer is let them configure the sensitivity from 1 to 5 and this will be the constant applied to the peak threshold fomula of average+(k*stddev)
+

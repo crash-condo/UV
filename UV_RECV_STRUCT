@@ -1,0 +1,49 @@
+#include <IRremote.h>  // Assuming you're using the IRremote library
+
+// Define a struct to hold the data for each IR input
+struct irRecvData {
+  unsigned long input_code;      // Store the input code
+  uint8_t bits;                  // Number of bits in the IR signal
+  decode_type_t protocolNumber;  // Protocol number (from IRremote)
+  uint16_t irAddress;            // Address of the IR device
+  String protocol;               // Protocol name (dynamic, using String)
+  uint16_t keyCommand;           // Command code from the remote
+};
+
+// Create an array of two elements (2x6 structure)
+irRecvData volControl[2];
+
+void setup() {
+  Serial.begin(9600);
+
+  // Initialize first IR input data
+  volControl[0].input_code = 0xFF30CF;
+  volControl[0].bits = 32;
+  volControl[0].protocolNumber = NEC;
+  volControl[0].irAddress = 0x10EF;
+  volControl[0].protocol = "NEC";   // Dynamic protocol name using String
+  volControl[0].keyCommand = 0x30CF;
+
+  // Initialize second IR input data
+  volControl[1].input_code = 0xFF18E7;
+  volControl[1].bits = 32;
+  volControl[1].protocolNumber = SONY;
+  volControl[1].irAddress = 0xA90;
+  volControl[1].protocol = "Sony";   // Dynamic protocol name using String
+  volControl[1].keyCommand = 0x18E7;
+
+  // Print out the values to verify
+  for (int i = 0; i < 2; i++) {
+    Serial.println("IR Input " + String(i + 1));
+    Serial.println("Input Code: " + String(volControl[i].input_code, HEX));
+    Serial.println("Bits: " + String(volControl[i].bits));
+    Serial.println("Protocol Number: " + String(volControl[i].protocolNumber));
+    Serial.println("IR Address: " + String(volControl[i].irAddress, HEX));
+    Serial.println("Protocol: " + volControl[i].protocol);   // Using String directly
+    Serial.println("Key Command: " + String(volControl[i].keyCommand, HEX));
+    Serial.println();
+  }
+}
+
+void loop() {
+}
