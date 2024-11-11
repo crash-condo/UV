@@ -167,25 +167,6 @@ void loop() {
 }
 
 void procSound(float cr) {
-  // Proccess Sound - procSound()
-  // Here's we'll implement the circular buffer using modulo math and leveraging the
-  // Arduino forever loop we will cycle the circular buffer endlessly with no endless 
-  // integer buildup for the integer.
-
-  // //Circular Buffer Readings for CircBuff readings struct instance
-  // readings.rTotal -= readings.array[readings.index];  // subtract old value from running total
-  // readings.array[readings.index] = cr;                // overwrite old value with new value at index
-  // readings.rTotal += cr;                              // add new value to running total
-  // readings.index = (readings.index + 1) % CBUFF_SIZE_10;          // Wraps around when index reaches BUFFER_SIZE
-
-  // // Calculate running average for readings struct instance
-  // readings.average = readings.rTotal / (float)CBUFF_SIZE_10;
-
-  // // get Exponential Moving Average
-  // readings.EMA.calc(readings.average, cr);
-
-  // // Get Standard Deviation
-  // readings.stdDev.calc(readings.average);
 
   readings.cycleBuffer(cr);
 
